@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# generate operation files
+./input_gen base.operation config.txt ./input
+
+# locations for simulation matrix
 loc_file="locations.txt"
 
 # day of year for re-initialization
