@@ -10,8 +10,7 @@ For details of the input generator, please check their README file.
 
 Weather files, soil files, and crop files should be provided by the user and put into the `input` directory.
 A `Cycles` executable should also be provided.
-A `locations.txt` file is needed, which contains all the locations in the simulation matrix.
-Each location should correspond to one weather file in the `input` directory.
-For example, for a location of `8.88Nx27.12E`, a `met8.88Nx27.12E.weather` should be provided.
+The weather files should have file names as `met*.weather`.
+The soil and crop file names should be specified in the `run_matrix.sh`.
 
 Run `make` to compile the input generator, and run `run_matrix.sh` to run the simulation matrix.
