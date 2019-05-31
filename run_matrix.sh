@@ -6,6 +6,14 @@
 # locations for simulation matrix
 loc_file="locations.txt"
 
+# write locations to location file
+for f in input/*.weather
+do
+    str=${f#"input/met"}
+    str=${str%".weather"}
+    echo "${str}"
+done > $loc_file
+
 # day of year for re-initialization
 DOY=1
 
