@@ -1,12 +1,36 @@
 #!/bin/bash
 
-# generate operation files
+######################
+# Specify parameters #
+######################
+
+# Day of year for re-initialization
+DOY=1
+
+# Simulation start and end years
+START_YEAR=2000
+END_YEAR=2017
+
+# Operation for baseline
+BASE=CP1PD1FT1FR3
+
+# Dimensions of simulation matrix
+NCP=1
+NPD=8
+NFT=1
+NFR=6
+
+############################
+# Generate operation files #
+############################
 ./input_gen base.operation config.txt ./input
 
-# locations for simulation matrix
+
+####################################
+# Write locations to location file #
+####################################
 loc_file="locations.txt"
 
-# write locations to location file
 for f in input/*.weather
 do
     str=${f#"input/met"}
@@ -14,30 +38,15 @@ do
     echo "${str}"
 done > $loc_file
 
-# day of year for re-initialization
-DOY=1
-
-START_YEAR=2000
-END_YEAR=2017
-
-# operation for baseline
-BASE=CP1PD1FT1FR3
-
-# dimensions of simulation matrix
-NCP=1
-NPD=8
-NFT=1
-NFR=6
+#########################################
+# Generate control and multi-mode files #
+#########################################
+# Create input directory
+mkdir -p input
 
 while IFS= read -r line
 do
-    # display $line or do somthing with $line
-    printf '%s\n' "$line"
-
-    # create input directory
-    mkdir -p input
-
-    # write control files
+    # Write control files
     cat << EOF > "input/$line.ctrl"
 SIMULATION_START_YEAR   ${START_YEAR}
 SIMULATION_END_YEAR     ${END_YEAR}
@@ -69,7 +78,7 @@ WEATHER_FILE            met$line.weather
 REINIT_FILE             N/A
 EOF
 
-    # write multi-mode files
+    # Write multi-mode files
     cat << EOF > "input/$line.multi"
 SIM_CODE                    ROTATION_YEARS  START_YEAR  END_YEAR    USE_REINIT  CROP_FILE           OPERATION_FILE          SOIL_FILE   WEATHER_FILE            REINIT_FILE         HOURLY_INFILTRATION AUTOMATIC_NITROGEN
 EOF
