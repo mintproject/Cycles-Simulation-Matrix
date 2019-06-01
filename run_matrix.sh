@@ -3,6 +3,11 @@
 ######################
 # Specify parameters #
 ######################
+# Crop file
+CROP_FILE=GenericCrops.crop
+
+# Soil file
+SOIL_FILE=pongo.soil
 
 # Day of year for re-initialization
 DOY=1
@@ -25,7 +30,6 @@ NFR=6
 ############################
 ./input_gen base.operation config.txt ./input
 
-
 ####################################
 # Write locations to location file #
 ####################################
@@ -36,7 +40,7 @@ do
     str=${f#"input/met"}
     str=${str%".weather"}
     echo "${str}"
-done > $loc_file
+done > ${loc_file}
 
 #########################################
 # Generate control and multi-mode files #
@@ -47,7 +51,7 @@ mkdir -p input
 while IFS= read -r line
 do
     # Write control files
-    cat << EOF > "input/$line.ctrl"
+    cat << EOF > "input/${line}.ctrl"
 SIMULATION_START_YEAR   ${START_YEAR}
 SIMULATION_END_YEAR     ${END_YEAR}
 ROTATION_SIZE           1
@@ -71,43 +75,43 @@ ANNUAL_PROFILE_OUT      1
 SEASON_OUT              1
 
 ## OTHER INPUT FILES ##
-CROP_FILE               GenericCrops.crop
-OPERATION_FILE          $BASE.operation
-SOIL_FILE               pongo.soil
-WEATHER_FILE            met$line.weather
+CROP_FILE               ${CROP_FILE}
+OPERATION_FILE          ${BASE}.operation
+SOIL_FILE               ${SOIL_FILE}
+WEATHER_FILE            met${line}.weather
 REINIT_FILE             N/A
 EOF
 
     # Write multi-mode files
-    cat << EOF > "input/$line.multi"
+    cat << EOF > "input/${line}.multi"
 SIM_CODE                    ROTATION_YEARS  START_YEAR  END_YEAR    USE_REINIT  CROP_FILE           OPERATION_FILE          SOIL_FILE   WEATHER_FILE            REINIT_FILE         HOURLY_INFILTRATION AUTOMATIC_NITROGEN
 EOF
 
-    for (( CP = 1; CP <= $NCP; CP++ ))
+    for (( CP = 1; CP <= ${NCP}; CP++ ))
     do
-        for (( PD = 1; PD <= $NPD; PD++ ))
+        for (( PD = 1; PD <= ${NPD}; PD++ ))
         do
-            for (( FT = 1; FT <= $NFT; FT++ ))
+            for (( FT = 1; FT <= ${NFT}; FT++ ))
             do
-                for (( FR = 1; FR <= $NFR; FR++ ))
+                for (( FR = 1; FR <= ${NFR}; FR++ ))
                 do
-                    cat << EOF >> "input/$line.multi"
-${line}.CP${CP}PD${PD}FT${FT}FR${FR}   1               2000        2017        1           GenericCrops.crop   CP1PD${PD}FT1FR$FR.operation  pongo.soil  met8.88Nx27.12E.weather 8.88Nx27.12E.reinit 1                   0
+                    cat << EOF >> "input/${line}.multi"
+${line}.CP${CP}PD${PD}FT${FT}FR${FR}   1               ${START_YEAR}        ${END_YEAR}        1           ${CROP_FILE}   CP${CP}PD${PD}FT${FT}FR${FR}.operation  ${SOIL_FILE}  met${line}.weather ${line}.reinit 1                   0
 EOF
                 done
             done
         done
     done
 
-# Run baseline simulation in baseline model with spinup
-echo "Run baseline simulation in spin-up mode and generate re-initialization file"
-./Cycles -s -l $DOY ${line}
+    # Run baseline simulation in baseline model with spinup
+    echo "Run baseline simulation in spin-up mode and generate re-initialization file"
+    ./Cycles -s -l $DOY ${line}
 
-# Copy generated re-initialization file into input directory
-mv output/${line}/reinit.dat input/${line}.reinit
+    # Copy generated re-initialization file into input directory
+    mv output/${line}/reinit.dat input/${line}.reinit
 
-# Run batch simulation with re-initialization
-echo "Run batch simulations using re-initialization"
-./Cycles -m ${line}.multi
+    # Run batch simulation with re-initialization
+    echo "Run batch simulations using re-initialization"
+    ./Cycles -m ${line}.multi
 
 done <"$loc_file"
