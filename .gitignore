@@ -35,6 +35,8 @@
 *.i*86
 *.x86_64
 *.hex
+input_gen
+Cycles
 
 # Debug files
 *.dSYM/
@@ -50,3 +52,12 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Output files
+input/*.operation
+input/*.ctrl
+input/*.multi
+input/*.reinit
+input/*.soil.ss
+locations.txt
+output/
