@@ -4,7 +4,7 @@
 #include <sys/stat.h>
 
 #define MAXKW     10     /* Maximum number of keywords */
-#define MAXREPL   50     /* Maximum number of target files */
+#define MAXREPL   1000   /* Maximum number of target files */
 #define MAXSTRING 256    /* Maximum number of line length */
 
 typedef struct input_gen_struct
