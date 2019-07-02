@@ -58,6 +58,6 @@ input/*.operation
 input/*.ctrl
 input/*.multi
 input/*.reinit
-input/*.soil.ss
+input/*_ss.soil
 locations.txt
 output/
