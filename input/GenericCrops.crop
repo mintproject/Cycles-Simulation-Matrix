@@ -1,5 +1,5 @@
 ####################################################
-# CROP DESCRIPTION                                 #
+# CROP DESCRIPTION - Maize                         #
 ####################################################
 NAME                                        MaizePD1
 FLOWERING_TT                                1500.05     # (degree C day)
@@ -321,6 +321,9 @@ LWP_STRESS_ONSET                            -1100       # (J/kg)
 LWP_WILTING_POINT                           -2000       # (J/kg)
 TRANSPIRATION_MAX                           15          # (mm/day)
 
+####################################################
+# CROP DESCRIPTION - C3_weed                       #
+####################################################
 NAME                                        C3_weed
 FLOWERING_TT                                500         # (degree C day)
 MATURITY_TT                                 1500        # (degree C day)
@@ -361,8 +364,11 @@ LWP_STRESS_ONSET                            -1000       # (J/kg)
 LWP_WILTING_POINT                           -1800       # (J/kg)
 TRANSPIRATION_MAX                           10          # (mm/day)
 
+####################################################
+# CROP DESCRIPTION - C4_weed                       #
+####################################################
 NAME                                        C4_weed
-FLOWERING_TT                                1400         # (degree C day)
+FLOWERING_TT                                1400        # (degree C day)
 MATURITY_TT                                 2000        # (degree C day)
 MAXIMUM_SOIL_COVERAGE                       100         # (%)
 MAXIMUM_ROOTING_DEPTH                       1.75        # (m)
@@ -391,7 +397,7 @@ MAXIMUM_HARVEST_INDEX                       0.15
 MINIMUM_HARVEST_INDEX                       0.05
 HARVEST_INDEX                               5.0
 THERMAL_TIME_TO_EMERGENCE                   65.00       # (degree C day)
-N_MAX_CONCENTRATION                         0.05       # (g/g)
+N_MAX_CONCENTRATION                         0.05        # (g/g)
 N_DILUTION_SLOPE                            0.40
 KC                                          1.0
 ANNUAL                                      1
@@ -400,3 +406,142 @@ C3                                          0
 LWP_STRESS_ONSET                            -1100       # (J/kg)
 LWP_WILTING_POINT                           -2000       # (J/kg)
 TRANSPIRATION_MAX                           10          # (mm/day)
+
+####################################################
+# CROP DESCRIPTION - Grain Sorghum                 #
+####################################################
+NAME                                        Sorghum
+FLOWERING_TT                                1150.00
+MATURITY_TT                                 1800.00
+MAXIMUM_SOIL_COVERAGE                       100
+MAXIMUM_ROOTING_DEPTH                       2.00
+AVERAGE_EXPECTED_YIELD                      0.999
+MAXIMUM_EXPECTED_YIELD                      0.999
+MINIMUM_EXPECTED_YIELD                      0.999
+COMMERCIAL_YIELD_MOISTURE                   0.00
+STANDING_RESIDUE_AT_HARVEST                 60.00
+RESIDUE_REMOVED                             80.00
+CLIPPING_BIOMASS_THRESHOLD_UPPER            999.0
+CLIPPING_BIOMASS_THRESHOLD_LOWER	        998.0
+HARVEST_TIMING                              -999
+CLIPPING_BIOMASS_DESTINY		            GRAZING
+MIN_TEMPERATURE_FOR_TRANSPIRATION           6.00
+THRESHOLD_TEMPERATURE_FOR_TRANSPIRATION     17.00
+MIN_TEMPERATURE_FOR_COLD_DAMAGE             -2.00
+THRESHOLD_TEMPERATURE_FOR_COLD_DAMAGE       5.00
+BASE_TEMPERATURE_FOR_DEVELOPMENT            6.00
+OPTIMUM_TEMPERATURE_FOR_DEVELOPEMENT        28.00
+MAX_TEMPERATURE_FOR_DEVELOPMENT             46.00
+INITIAL_PARTITIONING_TO_SHOOT               0.45
+FINAL_PARTITIONING_TO_SHOOT                 0.95
+RADIATION_USE_EFFICIENCY                    2.00
+TRANSPIRATION_USE_EFFICIENCY                8.00
+MAXIMUM_HARVEST_INDEX                       0.70
+MINIMUM_HARVEST_INDEX                       0.20
+HARVEST_INDEX                               1.13
+THERMAL_TIME_TO_EMERGENCE                   100.00
+N_MAX_CONCENTRATION                         0.055
+N_DILUTION_SLOPE                            0.40
+KC                                          1.05
+ANNUAL                                      1
+LEGUME                                      0
+C3                                          0
+LWP_STRESS_ONSET                            -1200.0
+LWP_WILTING_POINT                           -2200.0
+TRANSPIRATION_MAX                           10.00
+
+# parameters based on earlier calibrations
+# considering South Sudan climatic conditions (warmer)
+# temperature-dependent parameters can have GxE and acclimation does happen
+
+####################################################
+# CROP DESCRIPTION - Peanuts                       #
+####################################################
+NAME                                        Peanut
+FLOWERING_TT                                1050.00
+MATURITY_TT                                 1750.00
+MAXIMUM_SOIL_COVERAGE                       100
+MAXIMUM_ROOTING_DEPTH                       2.00
+AVERAGE_EXPECTED_YIELD                      0.999
+MAXIMUM_EXPECTED_YIELD                      0.999
+MINIMUM_EXPECTED_YIELD                      0.999
+COMMERCIAL_YIELD_MOISTURE                   0.00
+STANDING_RESIDUE_AT_HARVEST                 60.00
+RESIDUE_REMOVED                             80.00
+CLIPPING_BIOMASS_THRESHOLD_UPPER            999.0
+CLIPPING_BIOMASS_THRESHOLD_LOWER	        998.0
+HARVEST_TIMING                              -999
+CLIPPING_BIOMASS_DESTINY		            GRAZING
+MIN_TEMPERATURE_FOR_TRANSPIRATION           5.00
+THRESHOLD_TEMPERATURE_FOR_TRANSPIRATION     15.00
+MIN_TEMPERATURE_FOR_COLD_DAMAGE             -2.00
+THRESHOLD_TEMPERATURE_FOR_COLD_DAMAGE       5.00
+BASE_TEMPERATURE_FOR_DEVELOPMENT            6.00
+OPTIMUM_TEMPERATURE_FOR_DEVELOPEMENT        28.00
+MAX_TEMPERATURE_FOR_DEVELOPMENT             46.00
+INITIAL_PARTITIONING_TO_SHOOT               0.45
+FINAL_PARTITIONING_TO_SHOOT                 0.95
+RADIATION_USE_EFFICIENCY                    1.00
+TRANSPIRATION_USE_EFFICIENCY                4.50
+MAXIMUM_HARVEST_INDEX                       0.30
+MINIMUM_HARVEST_INDEX                       0.10
+HARVEST_INDEX                               2.0
+THERMAL_TIME_TO_EMERGENCE                   100.00
+N_MAX_CONCENTRATION                         0.055
+N_DILUTION_SLOPE                            0.40
+KC                                          1.00
+ANNUAL                                      1
+LEGUME                                      1
+C3                                          1
+LWP_STRESS_ONSET                            -1100.0
+LWP_WILTING_POINT                           -1900.0
+TRANSPIRATION_MAX                           8.00
+
+####################################################
+# Peanut created by Armen Kemanian / 20 July 2018  #
+# Parameters based on experience in TX             #
+# Should be considered preliminary work            #
+####################################################
+
+####################################################
+# CROP DESCRIPTION - Sesame                        #
+####################################################
+NAME                                        Sesame
+FLOWERING_TT                                750.00
+MATURITY_TT                                 1700.00
+MAXIMUM_SOIL_COVERAGE                       100
+MAXIMUM_ROOTING_DEPTH                       1.50
+AVERAGE_EXPECTED_YIELD                      1.0
+MAXIMUM_EXPECTED_YIELD                      1.0
+MINIMUM_EXPECTED_YIELD                      1.0
+COMMERCIAL_YIELD_MOISTURE                   0.00
+STANDING_RESIDUE_AT_HARVEST                 10.00
+RESIDUE_REMOVED                             0.0
+CLIPPING_BIOMASS_THRESHOLD_UPPER            999.0
+CLIPPING_BIOMASS_THRESHOLD_LOWER	        0.5
+HARVEST_TIMING                              -999
+CLIPPING_BIOMASS_DESTINY		            RETURN
+MIN_TEMPERATURE_FOR_TRANSPIRATION           5.00
+THRESHOLD_TEMPERATURE_FOR_TRANSPIRATION     15.00
+MIN_TEMPERATURE_FOR_COLD_DAMAGE             -5.00
+THRESHOLD_TEMPERATURE_FOR_COLD_DAMAGE       3.00
+BASE_TEMPERATURE_FOR_DEVELOPMENT            5.00
+OPTIMUM_TEMPERATURE_FOR_DEVELOPEMENT        28.00
+MAX_TEMPERATURE_FOR_DEVELOPMENT             43.00
+INITIAL_PARTITIONING_TO_SHOOT               0.45
+FINAL_PARTITIONING_TO_SHOOT                 0.95
+RADIATION_USE_EFFICIENCY                    1.20
+TRANSPIRATION_USE_EFFICIENCY                4.50
+MAXIMUM_HARVEST_INDEX                       0.30
+MINIMUM_HARVEST_INDEX                       0.05
+HARVEST_INDEX                               3.8
+THERMAL_TIME_TO_EMERGENCE                   70.0
+N_MAX_CONCENTRATION                         0.07
+N_DILUTION_SLOPE                            0.40
+KC                                          1.05
+ANNUAL                                      1
+LEGUME                                      1
+C3                                          1
+LWP_STRESS_ONSET                            -1000.0
+LWP_WILTING_POINT                           -1800.0
+TRANSPIRATION_MAX                           8.00
