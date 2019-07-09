@@ -103,7 +103,7 @@ EOF
                     for (( WF = 1; WF <= ${NWF}; WF++ ))
                     do
                         cat << EOF >> "input/${line}.multi"
-${line}.CP${CP}PD${PD}FT${FT}FR${FR}WF${WF}    20              ${START_YEAR}        ${END_YEAR}        1           ${CROP_FILE}   CP${CP}PD${PD}FT${FT}FR${FR}WF${WF}.operation   ${SOIL_FILE}  met${line}.weather ${line}.reinit 1                   0
+${line}.CP${CP}PD${PD}FT${FT}FR${FR}WF${WF}    1               ${START_YEAR}        ${END_YEAR}        1           ${CROP_FILE}   CP${CP}PD${PD}FT${FT}FR${FR}WF${WF}.operation   ${SOIL_FILE}  met${line}.weather ${line}.reinit 1                   0
 EOF
                     done
                 done
